@@ -21,6 +21,8 @@ This web application allows users to add, view, access, and rate campgrounds by 
 ## Project Overview
 This project demonstrates a comprehensive 3-tier full stack application deployment using Azure DevOps for CI/CD, Docker for containerization, and Amazon EKS for orchestration. The application is built with Node.js, and it leverages Cloudinary for image storage, Mapbox for mapping, and MongoDB Atlas for database management. The project includes a robust deployment pipeline, static code analysis, and security scanning.
 
+![Screenshot from 2024-07-30 17-09-15](https://github.com/user-attachments/assets/d4492e78-5573-42d5-8075-23dcf9a3c37c)
+
 ## Installation
 To get started with the project, clone the repository and follow the steps below:
 
@@ -68,9 +70,10 @@ sudo chmod 666 /var/run/docker.sock
 ## Setting Up SonarQube
 1. Ensure Docker is installed using the script above.
 2. Run the following command to start SonarQube:
-``sh
+```sh
 docker run -d --name sonar -p 9000:9000 sonarqube:lts-community
 ```
+![Screenshot from 2024-07-30 13-35-24](https://github.com/user-attachments/assets/45d8c116-fc91-428d-af2e-4393aa9a95e6)
 
 ## Setting Up EKS
 
@@ -103,6 +106,7 @@ eksctl create cluster --name=my-eks22 --region=ap-south-1 --zones=ap-south-1a,ap
 eksctl utils associate-iam-oidc-provider --region ap-south-1 --cluster my-eks22 --approve
 eksctl create nodegroup --cluster=my-eks22 --region=ap-south-1 --name=node2 --node-type=t3.medium --nodes=3 --nodes-min=2 --nodes-max=4 --node-volume-size=20 --ssh-access --ssh-public-key=Key --managed --asg-access --external-dns-access --full-ecr-access --appmesh-access --alb-ingress-access
 ```
+![Screenshot from 2024-07-24 12-55-11](https://github.com/user-attachments/assets/b5267b00-ca32-47e9-b6a2-c47bed975033)
 
 ## Local Execution
 Connect to the machine using ssh-key in Mobaxterm:
@@ -145,6 +149,13 @@ npm start
 ```
 
 7. Access the app at http://VM_IP:3000 (replace VM_IP with the IP address of your Ubuntu machine).
+
+![Screenshot from 2024-07-30 11-40-43](https://github.com/user-attachments/assets/887f980a-8471-4c03-a953-e695d32f2e84)
+
+![Screenshot from 2024-07-30 11-42-55](https://github.com/user-attachments/assets/4abd2d7e-1658-45ae-8706-7cf5b9790e82)
+
+![Screenshot from 2024-07-30 11-44-54](https://github.com/user-attachments/assets/d7173164-2b28-48e3-8dd6-b5f337908d05)
+
 
 ## Dev Deployment Pipeline
 
@@ -197,6 +208,7 @@ steps:
     docker run -d -p 3000:3000 adijaiswal/camp:latest
   displayName: 'Deploy Docker Image Locally'
 ```
+![Screenshot from 2024-07-30 14-05-41](https://github.com/user-attachments/assets/039884b5-10db-4a73-8bb8-10c67338dc2d)
 
 ## Production Deployment Pipeline
 ### Azure DevOps Pipeline Configuration
@@ -254,6 +266,7 @@ steps:
     kubectl get svc -n webapps
   displayName: 'Verify Deployment'
 ```
+![Screenshot from 2024-07-30 16-33-32](https://github.com/user-attachments/assets/38c66754-bfc9-4602-a5f2-ab3c3e5228a1)
 
 ## Environment Variables
 Ensure you have the following environment variables configured in your .env file:
