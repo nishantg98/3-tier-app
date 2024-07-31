@@ -11,24 +11,6 @@ This web application allows users to add, view, access, and rate campgrounds by 
 - **Helmet**: Enhances application security.
 - ...
 
-## Setup Instructions
-
-To get this application up and running, you'll need to set up accounts with Cloudinary, Mapbox, and MongoDB Atlas. Once these are set up, create a `.env` file in the same folder as `app.js`. This file should contain the following configurations:
-
-```sh
-CLOUDINARY_CLOUD_NAME=[Your Cloudinary Cloud Name]
-CLOUDINARY_KEY=[Your Cloudinary Key]
-CLOUDINARY_SECRET=[Your Cloudinary Secret]
-MAPBOX_TOKEN=[Your Mapbox Token]
-DB_URL=[Your MongoDB Atlas Connection URL]
-SECRET=[Your Chosen Secret Key] # This can be any value you prefer
-```
-
-After configuring the .env file, you can start the project by running:
-```sh
-docker compose up
-```
-
 ## Application Screenshots
 ![](./images/home.jpg)
 ![](./images/campgrounds.jpg)
@@ -93,7 +75,7 @@ docker run -d --name sonar -p 9000:9000 sonarqube:lts-community
 ## Setting Up EKS
 
 AWS CLI Installation
-``sh
+```sh
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 sudo apt install unzip
 unzip awscliv2.zip
@@ -102,14 +84,14 @@ aws configure
 ```
 
 kubectl Installation
-``sh
+```sh
 curl -o kubectl https://amazon-eks.s3.us-west-2.amazonaws.com/1.19.6/2021-01-05/bin/linux/amd64/kubectl
 chmod +x ./kubectl
 sudo mv ./kubectl /usr/local/bin
 kubectl version --short --client
 ```
 eksctl Installation
-``sh
+```sh
 curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
 sudo mv /tmp/eksctl /usr/local/bin
 eksctl version
@@ -125,7 +107,7 @@ eksctl create nodegroup --cluster=my-eks22 --region=ap-south-1 --name=node2 --no
 ## Local Execution
 Connect to the machine using ssh-key in Mobaxterm:
 1. Clone the repository:
-``sh
+```sh
 git clone <repository_url>
 cd <repository_directory>
 ```
@@ -143,7 +125,7 @@ npm -v # should print `10.5.0`
 
 3. Obtain API keys from Cloudinary, Mapbox, and MongoDB Atlas.
 4. Create a .env file and add the following lines with your actual values:
-``sh
+```sh
 CLOUDINARY_CLOUD_NAME=[Your Cloudinary Cloud Name]
 CLOUDINARY_KEY=[Your Cloudinary Key]
 CLOUDINARY_SECRET=[Your Cloudinary Secret]
